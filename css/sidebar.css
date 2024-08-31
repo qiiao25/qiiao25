@@ -1,0 +1,204 @@
+.shopping-cart {
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 88vh; /* Isi seluruh tinggi viewport */
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1); /* Sesuaikan efek bayangan */
+}
+
+.cart-items {
+  flex-grow: 1; /* Biarkan bagian ini tumbuh untuk mengisi ruang yang tersedia */
+  overflow-y: auto; /* Aktifkan scroll vertikal jika item melebihi tinggi */
+  margin-bottom: 20px; /* Jarak bawah antara item dan total harga */
+  max-height: calc(
+    100vh - 160px
+  ); /* Sesuaikan tinggi maksimum, dengan memperhitungkan tinggi header dan total harga */
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.cart-product-image img {
+  width: 50px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.cart-product-details {
+  flex: 1;
+}
+
+.cart-quantity {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.quantity-decrease,
+.quantity-increase,
+.remove-item-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+.quantity-input {
+  width: 50px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 0 10px;
+}
+
+.cart-product-price {
+  font-weight: bold;
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0px;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.checkout-button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #28a745;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .shopping-cart {
+    height: 94vh; /* Isi seluruh tinggi viewport */
+  }
+
+  .cart-item-image img {
+    width: 80px; /* Ubah ukuran gambar agar lebih besar */
+    height: auto;
+  }
+
+  .shopping-cart h2 {
+    font-size: 28px;
+  }
+
+  .cart-total h3 {
+    font-size: 22px;
+    margin-bottom: 0px;
+  }
+
+  .cart-item-details {
+    font-size: 16px; /* Sesuaikan ukuran font */
+    padding-left: 10px; /* Sesuaikan padding */
+  }
+
+  .cart-item-details div {
+    padding-top: 5px; /* Kurangi jarak antar elemen */
+  }
+
+  .cart-item-details .decrease,
+  .cart-item-details .increase,
+  .cart-item-details .remove {
+    padding: 5px; /* Kurangi ukuran padding tombol */
+  }
+
+  .cart-item-details .decrease,
+  .cart-item-details .increase {
+    font-size: 16px; /* Sesuaikan ukuran font tombol */
+  }
+
+  .cart-item-details .remove {
+    padding-left: 80px; /* Geser tombol hapus ke kanan */
+    font-size: 16px; /* Sesuaikan ukuran font tombol */
+  }
+
+  .cart-item-details span {
+    font-size: 16px; /* Ukuran font untuk kuantitas */
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight: bold;
+  }
+
+  .cart-item-details .item-price {
+    font-size: 16px; /* Ukuran font untuk harga */
+    padding-top: 10px;
+  }
+}
+
+/* Mobile Phone */
+@media (max-width: 450px) {
+  .shopping-cart {
+    height: 93vh; /* Isi seluruh tinggi viewport */
+  }
+
+  .shopping-cart h2 {
+    font-size: 25px;
+  }
+
+  .cart-total h3 {
+    font-size: 18px;
+  }
+
+  .cart-item-image img {
+    width: 80px; /* Ubah ukuran gambar agar lebih besar */
+    height: auto;
+  }
+
+  .cart-item-details {
+    font-size: 16px; /* Sesuaikan ukuran font */
+    padding-left: 10px; /* Sesuaikan padding */
+  }
+
+  .cart-item-details div {
+    padding-top: 5px; /* Kurangi jarak antar elemen */
+  }
+
+  .cart-item-details .decrease,
+  .cart-item-details .increase,
+  .cart-item-details .remove {
+    padding: 5px; /* Kurangi ukuran padding tombol */
+  }
+
+  .cart-item-details .decrease,
+  .cart-item-details .increase {
+    font-size: 16px; /* Sesuaikan ukuran font tombol */
+  }
+
+  .cart-item-details .remove {
+    padding-left: 80px; /* Geser tombol hapus ke kanan */
+    font-size: 16px; /* Sesuaikan ukuran font tombol */
+  }
+
+  .cart-item-details span {
+    font-size: 16px; /* Ukuran font untuk kuantitas */
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight: bold;
+  }
+
+  .cart-item-details .item-price {
+    font-size: 16px; /* Ukuran font untuk harga */
+    padding-top: 10px;
+  }
+}

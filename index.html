@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kopi Khey</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap Icon -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
+    <!-- Tailwind CSS CDN -->
+    <link href="./src/output.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+
+    <!-- Midtrans Script -->
+    <script
+      type="text/javascript"
+      src="https://app.sandbox.midtrans.com/snap/snap.js"
+      data-client-key="SB-Mid-client-G0_aq79rL0Ka5Lch"
+    ></script>
+
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <!-- My Style -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/sidebar.css" />
+
+    <!-- alpineJS -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+  </head>
+
+  <body>
+    <!-- Navbar start -->
+    <nav class="navbar">
+      <a href="#" class="navbar-logo">Kopi<span>Khey</span></a>
+      <div class="navbar-nav">
+        <a href="#home">Home</a>
+        <a href="#about">Tentang Kami</a>
+        <a href="#menu">Menu</a>
+        <!-- <a href="#products">Produk</a> -->
+        <a href="#contact">Kontak</a>
+      </div>
+      <div class="navbar-extra">
+        <!-- <div class="navbar-extra-wrapper"> -->
+        <a href="#" id="search-button"><i data-feather=""></i></a>
+        <a href="#" id="shopping-cart-button">
+          <i data-feather="shopping-cart"></i>
+          <p class="qty-badge"></p>
+        </a>
+        <!-- </div> -->
+        <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
+      </div>
+
+      <!-- Search Form start -->
+      <div class="search-form">
+        <input type="search" id="search-box" placeholder="search here..." />
+        <label for="search-box"><i data-feather="search"></i></label>
+      </div>
+      <!-- Search Form end -->
+
+      <!-- Shopping Cart start -->
+      <div class="shopping-cart">
+        <h2>Keranjang</h2>
+        <div class="cart-items">
+          <!-- Item keranjang akan ditambahkan di sini secara dinamis -->
+        </div>
+        <div class="cart-total">
+          <h3>Total Harga :</h3>
+          <div class="total-price" id="total-price">Rp 0</div>
+        </div>
+        <button
+          type="button"
+          class="checkout-button flex items-center justify-center gap-2"
+          data-modal-target="static-modal"
+          data-modal-toggle="static-modal"
+        >
+          Proses<i class="bi bi-arrow-right text-xl"></i>
+        </button>
+        <!-- </form> -->
+      </div>
+      <!-- Shopping Cart end -->
+
+      <!-- Modal Checkout -->
+      <div
+        id="static-modal"
+        tabindex="-1"
+        aria-hidden="true"
+        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative p-4 w-full max-w-2xl max-h-full">
+          <div
+            class="relative bg-white rounded-lg shadow"
+            style="padding-bottom: 1rem">
+            <div
+              class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                Pembayaran
+              </h3>
+              <button
+                type="button"
+                id="btn-close-modal"
+                class="text-gray-400 hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                data-modal-hide="static-modal">
+                <i data-feather="x"></i>
+                <span class="sr-only">Close modal</span>
+              </button>
+            </div>
+            <form
+              id="checkout-form"
+              class="rounded-md border-[2px] p-4 md:p-5 space-y-2 mx-5">
+              <div>
+                <h3
+                  class="text-center text-gray-900 text-2xl font-bold hover:underline underline-offset-8"
+                  style="margin-bottom: 2rem">
+                  Detail Pelanggan
+                </h3>
+                <div class="grid gap-4 mb-4 grid-cols-2">
+                  <div class="col-span-2 sm:col-span-1">
+                    <label
+                      for="fullname"
+                      class="block mb-2 text-sm font-bold text-gray-900"
+                      >Nama Lengkap</label>
+                    <input
+                      type="text"
+                      name="fullname"
+                      id="name"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                      placeholder="Masukan Nama Lengkap Anda"
+                      required=""/>
+                  </div>
+                  <div class="col-span-2 sm:col-span-1">
+                    <label
+                      for="email"
+                      class="block mb-2 text-sm font-bold text-gray-900"
+                      >Email</label>
+                    <input
+                      type="email"
+                      name="email"
+                      id="email"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                      placeholder="Masukan email Anda"
+                      required
+                    />
+                  </div>
+                  </div>
+                  <div class="col-span-2 sm:col-span-1">
+                    <label
+                      for="Alamat"
+                      class="block mb-2 text-sm font-bold text-gray-900"
+                      >Alamat</label>
+                    <input
+                      type="Alamat"
+                      name="Alamat"
+                      id="Alamat"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                      placeholder="Masukan Alamat Anda"/>
+                  </div>
+                </div>
+                <div class="grid gap-4 mb-5 grid-cols-2">
+                  <div class="col-span-2 sm:col-span-1">
+                    <label
+                      for="phone_number"
+                      class="block mb-2 text-sm font-bold text-gray-900"
+                      >Nomor HP</label>
+                    <input
+                      type="number"
+                      name="phone_number"
+                      id="phone_number"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                      placeholder="Masukan Nomor HP Anda"
+                      required
+                    />
+                  </div>
+                </div>
+                <hr
+                  class="border-t-2 border-dotted border-gray-900"
+                  style="margin: 1rem 0rem"/>
+                <div>
+                  <div class="flex gap-2 justify-between">
+                    <p class="font-bold text-gray-900">Jumlah Produk</p>
+                    <p class="font-medium text-gray-900" id="co-total-product">
+                      0
+                    </p>
+                  </div>
+                  <div class="flex gap-2 justify-between">
+                    <p class="font-bold text-gray-900">Total Bayar (Rp)</p>
+                    <p class="font-medium text-gray-900" id="co-total-price">
+                      0
+                    </p>
+                  </div>
+                </div>
+                <hr
+                  class="border-t-2 border-dotted border-gray-900"
+                  style="margin: 1rem 0rem"
+                />
+                <button
+                  type="submit"
+                  class="py-2 flex items-center justify-center gap-2 bg-green-600 text-white w-full rounded-md font-semibold">
+                  Checkout <i class="bi bi-credit-card"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- Navbar end -->
+
+    <!-- Hero Section start -->
+    <section class="hero" id="home">
+      <main class="content">
+        <h1>Mari Nikmati Secangkir <span>Kopi</span></h1>
+        <p>
+          Tidak hanya sekadar coffee shop. Ini adalah tempat di mana setiap
+          cangkir kopi dibuat dengan cinta dan dedikasi. Menyajikan kopi
+          berkualitas tinggi dengan cara yang ramah lingkungan dan
+          berkelanjutan. Mereka bekerja sama dengan petani kopi lokal untuk
+          memastikan bahwa biji kopi yang mereka gunakan diproduksi secara adil
+          dan etis.
+        </p>
+      </main>
+    </section>
+    <!-- Hero Section end -->
+
+    <!-- About Section start -->
+    <section id="about" class="about">
+      <h2><span>Tentang</span> Kami</h2>
+
+      <div class="row">
+        <div class="about-img">
+          <img src="img/header.jpeg" alt="Tentang Kami" />
+        </div>
+        <div class="content">
+          <h3>Kenapa memilih kopi kami?</h3>
+          <p>
+            Kami memastikan Anda mendapatkan pengalaman minum kopi terbaik. Kami
+            bekerja tanpa henti untuk menjamin kami memenuhi janji kami. bekerja
+            sama dengan produsen di Indonesia untuk menghasilkan hasil panen
+            terbaik bagi pelanggan kami.
+          </p>
+          <p>
+            Kami menawarkan berbagai macam pilihan minuman, mulai dari kopi
+            klasik hingga kreasi unik yang hanya bisa Anda temukan di Kopi Khey.
+            Selain kopi, kami juga menyediakan pilihan teh serta non-coffee
+            lainnya, memastikan ada sesuatu untuk semua orang.
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- About Section end -->
+
+    <!-- Menu Section start -->
+    <section id="menu" class="menu">
+      <h2><span>Menu</span> Kami</h2>
+
+    <!-- Products Section start -->
+    <section class="products" id="products" x-data="products">
+      <div class="row">
+        <div class="product-card" id="product1">
+          <div class="product-icons">
+            <a
+              href="javascript:void(0);"
+              class="add-to-cart-button"
+              data-product-id="product1"
+              data-product-price="89000"
+            >
+              <i data-feather="shopping-cart"></i>
+            </a>
+            <a href="#" class="item-detail-button">
+              <i data-feather="eye"></i>
+            </a>
+          </div>
+          <div class="product-image">
+            <img src="img/products/1liter.jpg" alt="1liter" />
+          </div>
+          <div class="product-content">
+            <h3>Kopi Khey 1 Liter</h3>
+            <div class="product-price">IDR 89,000</div>
+          </div>
+        </div>
+
+        <div class="product-card" id="product2">
+          <div class="product-icons">
+            <a
+              href="javascript:void(0);"
+              class="add-to-cart-button"
+              data-product-id="product2"
+              data-product-price="97000"
+            >
+              <i data-feather="shopping-cart"></i>
+            </a>
+            <a href="#" class="item-detail-button">
+              <i data-feather="eye"></i>
+            </a>
+          </div>
+          <div class="product-image">
+            <img src="img/products/bundling-1.jpg" alt="bundling-1" />
+          </div>
+          <div class="product-content">
+            <h3>Bundling - 1</h3>
+            <div class="product-price">IDR 97,000</div>
+          </div>
+        </div>
+
+        <div class="product-card" id="product3">
+          <div class="product-icons">
+            <a
+              href="javascript:void(0);"
+              class="add-to-cart-button"
+              data-product-id="product3"
+              data-product-price="90000"
+            >
+              <i data-feather="shopping-cart"></i>
+            </a>
+            <a href="#" class="item-detail-button">
+              <i data-feather="eye"></i>
+            </a>
+          </div>
+          <div class="product-image">
+            <img src="img/products/bundling-2.jpg" alt="bundling-2" />
+          </div>
+          <div class="product-content">
+            <h3>Bundling - 2</h3>
+            <div class="product-price">IDR 90,000</div>
+          </div>
+        </div>
+
+        <div class="product-card" id="product4">
+          <div class="product-icons">
+            <a
+              href="javascript:void(0);"
+              class="add-to-cart-button"
+              data-product-id="product4"
+              data-product-price="67000"
+            >
+              <i data-feather="shopping-cart"></i>
+            </a>
+            <a href="#" class="item-detail-button">
+              <i data-feather="eye"></i>
+            </a>
+          </div>
+          <div class="product-image">
+            <img src="img/products/bundling-3.jpg" alt="bundling-3" />
+          </div>
+          <div class="product-content">
+            <h3>Bundling - 3</h3>
+            <div class="product-price">IDR 67,000</div>
+          </div>
+        </div>
+
+        <div class="product-card" id="product5">
+          <div class="product-icons">
+            <a
+              href="javascript:void(0);"
+              class="add-to-cart-button"
+              data-product-id="product5"
+              data-product-price="29000"
+            >
+              <i data-feather="shopping-cart"></i>
+            </a>
+            <a href="#" class="item-detail-button">
+              <i data-feather="eye"></i>
+            </a>
+          </div>
+          <div class="product-image">
+            <img src="img/products/cheesy-matcha.jpg" alt="cheesy-matcha" />
+          </div>
+          <div class="product-content">
+            <h3>Cheesy Matcha</h3>
+            <div class="product-price">IDR 29,000</div>
+          </div>
+        </div>
+
+        <div class="product-card" id="product6">
+          <div class="product-icons">
+            <a
+              href="javascript:void(0);"
+              class="add-to-cart-button"
+              data-product-id="product6"
+              data-product-price="29000"
+            >
+              <i data-feather="shopping-cart"></i>
+            </a>
+            <a href="#" class="item-detail-button">
+              <i data-feather="eye"></i>
+            </a>
+          </div>
+          <div class="product-image">
+            <img src="img/products/chocoCaramel.jpg" alt="chocoCaramel" />
+          </div>
+          <div class="product-content">
+            <h3>Choco Caramel</h3>
+            <div class="product-price">IDR 29,000</div>
+          </div>
+        </div>
+        <div class="product-card" id="product7">
+          <div class="product-icons">
+            <a
+              href="javascript:void(0);"
+              class="add-to-cart-button"
+              data-product-id="product7"
+              data-product-price="29000">
+              <i data-feather="shopping-cart"></i>
+            </a>
+            <a href="#" class="item-detail-button">
+              <i data-feather="eye"></i>
+            </a>
+          </div>
+          <div class="product-image">
+            <img
+              src="img/products/oreo-choco-cheese.jpg"
+              alt="oreo-choco-cheese"
+            />
+          </div>
+          <div class="product-content">
+            <h3>Oreo-Choco Cheese</h3>
+            <div class="product-price">IDR 29,000</div>
+          </div>
+        </div>
+        <div class="product-card" id="product8">
+          <div class="product-icons">
+            <a
+              href="javascript:void(0);"
+              class="add-to-cart-button"
+              data-product-id="product8"
+              data-product-price="29000"
+            >
+              <i data-feather="shopping-cart"></i>
+            </a>
+            <a href="#" class="item-detail-button">
+              <i data-feather="eye"></i>
+            </a>
+          </div>
+          <div class="product-image">
+            <img src="img/products/RVCO.jpg" alt="RVCO" />
+          </div>
+          <div class="product-content">
+            <h3>Red Velvet Cheesy Oreo</h3>
+            <div class="product-price">IDR 29,000</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Section end -->
+
+    <!-- Contact Section start -->
+    <section id="contact" class="contact">
+      <h2><span>kunjungi</span> Kami</h2>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis,
+        provident.
+      </p>
+
+      <div class="row">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31708.076606296054!2d106.81175700000001!3d-6.5833973000000015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c42c78c297c9%3A0x8e016064efa7bb80!2sSoukai%20Family!5e0!3m2!1sen!2sid!4v1720375480833!5m2!1sen!2sid"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          class="map"
+        ></iframe>
+      </div>
+    </section>
+    <!-- Contact Section end -->
+
+    <!-- Footer start -->
+    <footer>
+
+      <div class="links">
+        <a href="#home">Home</a>
+        <a href="#about">Tentang Kami</a>
+        <a href="#menu">Menu</a>
+        <a href="#contact">Kontak</a>
+      </div>
+      <div class="grid grid-cols-3 mx-5">
+        <div class="wrapper-footer-logo flex flex-col gap-5">
+          <a href="#" class="footer-logo font-bold italic text-3xl"
+            >Kopi<span class="text-gray-900">Khey</span></a
+          >
+        </div>
+        <div class="wrapper-contact">
+          <p class="mb-5 text-[#fff] text-center font-semibold">Kontak Kami</p>
+          <a
+            class="flex gap-2 items-center justify-center"
+            target="_blank"
+            href="https://wa.me/628114505127"
+            ><img class="h-7" src="./img/footer/whatsapp.png" alt="" />
+            +62 811-4505-127
+          </a>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2">
+        <div class="wrapper-social-media">
+          <p
+            class="text-center text-[#fff] text-lg font-semibold tracking-wide"
+          >
+            Sosial Media
+          </p>
+          <div class="flex gap-4 mt-5 justify-center">
+            <!-- Instagram -->
+            <a
+              href="https://www.instagram.com/kopikhey/?hl=en"
+              target="_blank"
+              class="flex items-center justify-center gap-2"
+            >
+              <img
+                src="./img/footer/instagram.png"
+                class="h-7"
+                alt="gojek-platform"
+              />
+              @kopikhey
+            </a>
+          </div>
+        </div>
+        <div class="wrapper-platform">
+          <p
+            class="text-center text-[#fff] text-lg font-semibold tracking-wide"
+          >
+            Platform
+          </p>
+          <div class="flex gap-4 mt-5 justify-center">
+            <!-- Gojek -->
+            <a
+              href="https://gofood.link/a/FtpTUj1"
+              target="_blank"
+              class="flex items-center justify-center"
+            >
+              <img
+                src="./img/footer/gojek.png"
+                class="h-7 mt-2"
+                alt="gojek-platform"
+              />
+            </a>
+            <!-- Grab -->
+            <a
+              href="https://r.grab.com/g/6-20240817_022540_a8d0467b3311ec32_MEXMPS-6-CZM2GXXFC3BCE2"
+              class="flex items-center justify-center"
+            >
+              <img
+                src="./img/footer/grab.png"
+                target="_blank"
+                class="h-8"
+                alt="grab-platform"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="credit text-center">
+        <p>Created by <a href="">Aqiilah Harits Musyaffa</a>. | &copy; 2024.</p>
+      </div>
+    </footer>
+    <!-- Footer end -->
+
+    <!-- Modal Box Item Detail start -->
+    <div class="modal" id="item-detail-modal">
+      <div class="modal-container">
+        <a href="#" class="close-icon"><i data-feather="x"></i></a>
+        <div class="modal-content">
+          <img src="img/products/1liter.jpg" alt="Product1" />
+          <div class="product-content">
+            <h3>Kopi khey 1 liter</h3>
+            <p>
+              kopi khey 1 liter cocok buat nemenin kamu yang suka dirumah maupun
+              ketika kamu nongkrong rame-rame loh!!!
+            </p>
+            <div class="product-price">IDR 89,000</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="item-detail-modal">
+      <div class="modal-container">
+        <a href="#" class="close-icon"><i data-feather="x"></i></a>
+        <div class="modal-content">
+          <img src="img/products/bundling-1.jpg" alt="product2" />
+          <div class="product-content">
+            <h3>bundling 1</h3>
+            <p>
+              3 es kopi khey dan 2 latte siap temani kamu untuk berkumpul
+              bersama orang tersayang!!
+            </p>
+            <div class="product-price">IDR 97,000</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="item-detail-modal">
+      <div class="modal-container">
+        <a href="#" class="close-icon"><i data-feather="x"></i></a>
+        <div class="modal-content">
+          <img src="img/products/bundling-2.jpg" alt="product3" />
+          <div class="product-content">
+            <h3>bundling 2</h3>
+            <p>
+              5 es kopi khey siap temani kamu untuk berkumpul bersama orang
+              tersayang!!
+            </p>
+            </div>
+            <div class="product-price">IDR 90,000</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="item-detail-modal">
+      <div class="modal-container">
+        <a href="#" class="close-icon"><i data-feather="x"></i></a>
+        <div class="modal-content">
+          <img src="img/products/bundling-3.jpg" alt="product4" />
+          <div class="product-content">
+            <h3>bundling 3</h3>
+            <p>
+              2 es kopi khey dan 2 teh tarik siap dinikmati bersama pasangan
+              atau teman untuk pagi dan malam!!
+            </p>
+            <div class="product-price">IDR 90,000</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="item-detail-modal">
+      <div class="modal-container">
+        <a href="#" class="close-icon"><i data-feather="x"></i></a>
+        <div class="modal-content">
+          <img src="img/products/cheesy-matcha.jpg" alt="product5" />
+          <div class="product-content">
+            <h3>Cheesy Matcha</h3>
+            <p>
+              perpaduan Matcha dengan Cream cheese-nya pasti bikin MatchaLovers
+              ketagihan!!!
+            </p>
+            <div class="product-price">IDR 29,000</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="item-detail-modal">
+      <div class="modal-container">
+        <a href="#" class="close-icon"><i data-feather="x"></i></a>
+        <div class="modal-content">
+          <img src="img/products/chocoCaramel.jpg" alt="product6" />
+          <div class="product-content">
+            <h3>Choco Caramel</h3>
+            <p>
+              Choco Caramel ini adalah perpaduan dari campuran Saus Coklat
+              dengan Sirup Karamel, Rasanya manis kayak kamu.
+            </p>
+            <div class="product-price">IDR 29,000</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="item-detail-modal">
+      <div class="modal-container">
+        <a href="#" class="close-icon"><i data-feather="x"></i></a>
+        <div class="modal-content">
+          <img src="img/products/oreo-choco-cheese.jpg" alt="product7" />
+          <div class="product-content">
+            <h3>Oreo Choco Cheese</h3>
+            <p>
+              Oreo Choco Cheese adalah kombinasi rasa dari perpaduan oreo yang
+              dihancurkan dan dicampurkan dengan coklat dan keju lalu di blend
+              dan diproses sehingga menjadi minuman yang bikin kamu ngiler
+              setiap ngeliatnya deh!!
+            </p>
+            <div class="product-price">IDR 29,000</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="item-detail-modal">
+      <div class="modal-container">
+        <a href="#" class="close-icon"><i data-feather="x"></i></a>
+        <div class="modal-content">
+          <img src="img/products/RVCO.jpg" alt="product8" />
+          <div class="product-content">
+            <h3>Red Velvet Cheesy Oreo</h3>
+            <p>
+              Red Velvet Cheesy Oreo adalah hasil dari campuran Red Velvet
+              dengan Topping Oreo dan Cream Cheese. Minuman mewah yang pasti
+              bikin kamu keliatan keren setiap saat!!
+            </p>
+            <div class="product-price">IDR 29,000</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Box Item Detail end -->
+
+    <!-- Feather Icons -->
+    <script>
+      feather.replace();
+    </script>
+
+    <!-- My Javascript -->
+    <script src="js/script.js"></script>
+    <script src="./js/checkout.js"></script>
+
+    <!-- Tailwind CSS Script CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+
+    <!-- App -->
+    <script src="src/App.js"></script>
+  </body>
+</html>
